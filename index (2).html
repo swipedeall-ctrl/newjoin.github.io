@@ -228,7 +228,7 @@ let index = 0;
 setInterval(() => {
     index++;
     if(index >= track.children.length) index = 0;
-    track.style.transform = `translateX(${-index * 330}px)`;
+    track.style.transform = `translateX(${-index * 330}px)`; // width + margin
 }, 3500);
 
 // Profit ticker with random ₹ amounts
@@ -237,7 +237,7 @@ function generateTicker() {
     let text = "";
     for(let i=0;i<10;i++){
         const user = users[Math.floor(Math.random()*users.length)];
-        const amount = Math.floor(Math.random()*20000 + 500);
+        const amount = Math.floor(Math.random()*20000 + 500); // ₹500-₹20,500
         text += `${user} earned ₹${amount} today! &nbsp;&nbsp;&nbsp;`;
     }
     document.getElementById('ticker-text').innerHTML = text;
@@ -259,8 +259,9 @@ const drops = Array(Math.floor(columns)).fill(1);
 function draw() {
     ctx.fillStyle = "rgba(0,0,0,0.05)";
     ctx.fillRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle = "#ff9933";
+    ctx.fillStyle = "#ff9933"; // saffron letters
     ctx.font = fontSize + "px monospace";
+
     for(let i=0;i<drops.length;i++){
         const text = letters[Math.floor(Math.random()*letters.length)];
         ctx.fillText(text,i*fontSize,drops[i]*fontSize);
@@ -270,10 +271,12 @@ function draw() {
     requestAnimationFrame(draw);
 }
 draw();
+
 window.addEventListener('resize',()=>{
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 });
 </script>
+
 </body>
 </html>
